@@ -3,6 +3,8 @@
  * Please, make sure to read the "09 An-important-rule.md" file in exercises-info folder
  */
 
+import { error } from "console";
+
 
 /**
  * @task
@@ -12,8 +14,8 @@
  */
 
 export function iterate(arg) {
-  // Your code goes here...
-  
+  console.log(arg)
+  return arg + 1;
 }
 
 /**
@@ -23,8 +25,7 @@ export function iterate(arg) {
  */
 
 export function alwaysThrows() {
-  // Your code goes here...
-
+  throw new Error('OH NOES');
 }
 
 /**
@@ -36,8 +37,12 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject() {
-  // Your code goes here...
+export function onReject(e) {
+  if(typeof e === "object"){
+    return console.log(e.message);
+  }else{
+    return console.log(e);
+  }
 
 }
 
@@ -63,8 +68,35 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise;
-
+export const promise = Promise.resolve(iterate())
+.then((e) =>
+  iterate(e))
+.then((e) => 
+  iterate(e)
+)
+.then((e) => 
+  iterate(e)
+)
+.then((e) => 
+  iterate(e)
+)
+.then((e) => 
+  iterate(e)
+)
+.then((e) => 
+  alwaysThrows(e)
+)
+.then((e) => 
+  iterate(e)
+)
+.then((e) => 
+  iterate(e)
+)
+.then((e) =>
+  iterate(e)
+)
+// .then((e) => console.log(e))
+.catch((e) => console.log(onReject(e)))
 
 
 // === TEST YOURSELF ===
