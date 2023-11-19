@@ -23,7 +23,7 @@ export const attachTitle = (arg) => {
 export const getPromise = () => {
   // Your code goes here...
   return new Promise((res) => {
-    res('MANHATTAN');
+    res(console.log('DR. MANHATTAN'));
   })
 };
 

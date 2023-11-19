@@ -13,6 +13,10 @@
  * * set the usersUrl constant to store the json-server 'users' endpoint path
 */
 
+import fetch from 'node-fetch';
+
+// import {fetch} from 'node-fetch'
+
 export const usersUrl = 'http://localhost:3000/users/';
 
 /**
@@ -26,10 +30,13 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Example: const getLoginList = (data) => {<Your code>}
 */
 
-const getLoginList = () => {
+const getLoginList = (data) => {
   // Your code goes here...
-
+  console.log(data);
+  return data.map(item => item.login);
 }
+
+
 
 /**
  * @task 
@@ -39,7 +46,12 @@ const getLoginList = () => {
 */
 
 // Your code goes here ...
-const getData;
+const getData = fetch(usersUrl)
+  .then(response => response.json())
+  .then(data => data)
+  .catch(error => console.error('Error:', error))
+
+
 
 /**
  * @task 
@@ -51,10 +63,19 @@ const getData;
  *  .then(<Your_converting_code>)
  *  .then(<Your_logging_and_return_code>)
 */
-
 // Your code goes here ...
-export const result = getData;
-
+// export const result = getData
+//   .then((x) => getLoginList(x))
+//   .then((x) => console.log(x));
+export const result = 
+  getData
+  .then((data) => {
+    const logins = getLoginList(data);
+    console.log(logins);
+    return logins
+  
+  })
+  .catch(error => console.error('Error:', error))
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

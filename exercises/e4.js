@@ -30,7 +30,6 @@ export const handlePromise = first();
 // });
 
 handlePromise
-  .then((val) => val)
   .then((res) => second(res))
   .then((val) => {
     console.log(val);
