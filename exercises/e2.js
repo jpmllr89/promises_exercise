@@ -19,10 +19,10 @@ export const getPromise = (bool) => {
   // Your code goes here...
   return new Promise((resolve, reject) =>{
     let flag = bool;
-    if(flag){
-      return resolve("The PROMISE was RESOLVED");
-    }else{
-      return reject("The PROMISE was REJECTED");
+    if (flag) {
+      resolve("The PROMISE was RESOLVED");
+    } else {
+      reject("The PROMISE was REJECTED");
     }
   })
 };

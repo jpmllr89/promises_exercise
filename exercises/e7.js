@@ -54,15 +54,10 @@ export function onReject(e) {
 
 export const handlePromise = (promise) => {
   return promise
-        .then((val) => val)
-        .catch((err) => {
-          if (err.message){
-            return onReject(err);
-          }else{
-            console.error(err);
-            return err;
-          }
-        })
+    .then((val) => val)
+    .catch((err) => {
+      return err.message ? onReject(err) : err;
+    });
 };
 
 // === TEST YOURSELF ===

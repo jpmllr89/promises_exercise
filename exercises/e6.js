@@ -15,11 +15,11 @@
  */
 
 export const handlePromise = () => {
-  return new Promise((res, rej)=>{
-    rej('REJECTED!');
+  return new Promise((res, rej) => {
+    rej("REJECTED!");
   })
-  .catch((err)=>console.log(err))
-  .finally(()=>console.log('This promise is finished!'));
+    .catch((err) => console.log(err))
+    .finally(() => console.log("This promise is finished!"));
 };
 
 // === TEST YOURSELF ===

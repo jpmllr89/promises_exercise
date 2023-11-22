@@ -15,17 +15,16 @@
  * Example: export const getPromise(num) => return <Your code of promise>
  */
 
-  // Your code goes here...
+// Your code goes here...
 export const getPromise = (num) => {
-  if(Number.isInteger(num)){
-    const promise = new Promise((res)=>{
-      res(num)
-    })
-    return promise.then();
-    }else{
+  if (Number.isInteger(num)) {
+    return new Promise((res) => {
+      res(num);
+    });
+  } else {
     return 0;
   }
-}
+};
 
 /**
  * @task
@@ -41,10 +40,8 @@ export const getPromise = (num) => {
 export const updateSumValue = () => {
   // Your code goes here...
   let sum = 2;
-  sum + getPromise(120);
-  sum + 8;
-  console.log(sum);
-  return 10;
+  sum + getPromise(120).then((val) => sum+=val);
+  return sum+=8;
 };
 
 // === TEST YOURSELF ===

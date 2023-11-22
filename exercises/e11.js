@@ -32,7 +32,6 @@ export const usersUrl = 'http://localhost:3000/users/';
 
 const getLoginList = (data) => {
   // Your code goes here...
-  console.log(data);
   return data.map(item => item.login);
 }
 
@@ -47,10 +46,6 @@ const getLoginList = (data) => {
 
 // Your code goes here ...
 const getData = fetch(usersUrl)
-  .then(response => response.json())
-  .then(data => data)
-  .catch(error => console.error('Error:', error))
-
 
 
 /**
@@ -69,13 +64,13 @@ const getData = fetch(usersUrl)
 //   .then((x) => console.log(x));
 export const result = 
   getData
-  .then((data) => {
-    const logins = getLoginList(data);
-    console.log(logins);
-    return logins
-  
-  })
-  .catch(error => console.error('Error:', error))
+    .then((response) => response.json())
+    .then((data) => {
+      const logins = getLoginList(data)
+      console.log(logins);
+      return logins
+    })
+    .catch(error => console.error('Error:', error))
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

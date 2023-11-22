@@ -37,13 +37,8 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject(e) {
-  if(typeof e === "object"){
-    return console.log(e.message);
-  }else{
-    return console.log(e);
-  }
-
+export function onReject(err) {
+  return err.message ? console.log(err.message) : console.log(err);
 }
 
 /**
@@ -68,35 +63,35 @@ export function onReject(e) {
  */
 
 // Your code goes here...
-export const promise = Promise.resolve(iterate())
-.then((e) =>
-  iterate(e))
-.then((e) => 
-  iterate(e)
+export const promise = Promise.resolve(iterate(0))
+.then((val) =>
+  iterate(val))
+.then((val) => 
+  iterate(val)
 )
-.then((e) => 
-  iterate(e)
+.then((val) => 
+  iterate(val)
 )
-.then((e) => 
-  iterate(e)
+.then((val) => 
+  iterate(val)
 )
-.then((e) => 
-  iterate(e)
+.then((val) => 
+  iterate(val)
 )
-.then((e) => 
-  alwaysThrows(e)
+.then(() => 
+  alwaysThrows()
 )
-.then((e) => 
-  iterate(e)
+.then((val) => 
+  iterate(val)
 )
-.then((e) => 
-  iterate(e)
+.then((val) => 
+  iterate(val)
 )
-.then((e) =>
-  iterate(e)
+.then((val) =>
+  iterate(val)
 )
 // .then((e) => console.log(e))
-.catch((e) => console.log(onReject(e)))
+.catch((err) => console.log(onReject(err)))
 
 
 // === TEST YOURSELF ===
